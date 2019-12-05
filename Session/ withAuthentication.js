@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, dispatch } from "react-redux";
 import { compose } from "recompose";
 
 import { withFirebase } from "../Firebase";
@@ -11,8 +11,8 @@ const withAuthentication = Component => {
       super(props);
       
       SecureStore.getItemAsync("authUser")
-        .then(token => {
-          this.props.onSetAuthUser(JSON.parse(token));
+        .then(authUser => {
+          this.props.onSetAuthUser(JSON.parse(authUser));
         })
         .catch(err => {
           console.log(error(err.message || "ERROR"));
@@ -35,11 +35,10 @@ const withAuthentication = Component => {
           SecureStore.deleteItemAsync("authUser")
             .then(() => {
               this.props.onSetAuthUser(null);
-              dispatch(removeToken());
-              console.log("--removetoken from store");
+              console.log("--remove authUser from store");
             })
             .catch(err => {
-              dispatch(error(err.message || "ERROR"));
+              console.log(error(err.message || "ERROR"));
             });
         }
       );

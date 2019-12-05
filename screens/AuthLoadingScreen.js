@@ -1,19 +1,24 @@
 import React from "react";
-import {
-  ActivityIndicator,
-  StatusBar,
-  StyleSheet,
-  View
-} from "react-native";
-import { withAuthentication } from '../Session/index';
+import { ActivityIndicator, StatusBar, StyleSheet, View } from "react-native";
+import { withAuthentication } from "../Session/index";
+import { connect } from "react-redux";
+import { compose } from "redux";
 
 class AuthLoadingScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
+  componentDidMount() {
+    this.onLogin();
+  }
+  onLogin = () => {
+    this.props.navigation.navigate(
+      this.props.authUser !== null ? "Main" : "Auth"
+    );
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -31,5 +36,13 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 });
-// export default AuthLoadingScreen;
-export default withAuthentication(AuthLoadingScreen);
+
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser
+});
+
+export default compose(
+  // withFirebase,
+  withAuthentication,
+  connect(mapStateToProps, null, null, { pure: false })
+)(AuthLoadingScreen);

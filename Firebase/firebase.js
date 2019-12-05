@@ -2,25 +2,25 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
-const config = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-};
-
-
-
-// var config = {
-//   apiKey: "AIzaSyD2a8v82aYyaUhCA3W_bdAkqZl7ptS6TCs",
-//   authDomain: "givu-charity.firebaseapp.com",
-//   databaseURL: "https://givu-charity.firebaseio.com",
-//   projectId: "givu-charity",
-//   storageBucket: "givu-charity.appspot.com",
-//   messagingSenderId: "586438229111"
+// const config = {
+//   apiKey: process.env.REACT_APP_API_KEY,
+//   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+//   databaseURL: process.env.REACT_APP_DATABASE_URL,
+//   projectId: process.env.REACT_APP_PROJECT_ID,
+//   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+//   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 // };
+
+
+
+var config = {
+  apiKey: "AIzaSyD2a8v82aYyaUhCA3W_bdAkqZl7ptS6TCs",
+  authDomain: "givu-charity.firebaseapp.com",
+  databaseURL: "http://givu-charity.firebaseio.com",
+  projectId: "givu-charity",
+  storageBucket: "givu-charity.appspot.com",
+  messagingSenderId: "586438229111"
+};
 
 
 class Firebase {
@@ -110,11 +110,6 @@ class Firebase {
 
   users = () => this.db.ref('users');
 
-  // *** Message API ***
-
-  message = uid => this.db.ref(`messages/${uid}`);
-
-  messages = () => this.db.ref('messages');
 }
 
 export default Firebase;

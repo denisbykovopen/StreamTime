@@ -1,6 +1,5 @@
-import * as WebBrowser from "expo-web-browser";
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 export default class HomeScreen extends React.Component {
   render() {
