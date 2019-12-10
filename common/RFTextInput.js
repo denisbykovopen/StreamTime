@@ -10,6 +10,9 @@ const RFTextInput = ({
 }) => ( 
   <View>
     <TextInput
+      scrollEnabled={false}
+      multiline={true}
+
       onBlur={onBlur}
       onChangeText={onChange}
       onFocus={onFocus}
@@ -36,6 +39,8 @@ const styles = StyleSheet.create({
     height: 40,
     padding: 10,
     fontSize: 16,
+    marginTop: 10,
+    marginBottom: 10,
   },
   rootError: {
     color: 'red',

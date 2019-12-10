@@ -7,7 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 const logger = createLogger({
   collapsed: (getState, action, logEntry) => !logEntry.error,
-  colors: false
+  // colors: false
 });
 
 const middlewares = [ReduxThunk, logger];

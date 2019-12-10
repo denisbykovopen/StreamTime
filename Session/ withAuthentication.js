@@ -12,7 +12,11 @@ const withAuthentication = Component => {
       
       SecureStore.getItemAsync("authUser")
         .then(authUser => {
-          this.props.onSetAuthUser(JSON.parse(authUser));
+          console.log("--secure auth", typeof authUser, authUser);
+          this.props.onSetAuthUser(authUser);
+          // this.props.navigation.navigate(
+          //   this.props.authUser != null ? "Main" : "Auth"
+          // )
         })
         .catch(err => {
           console.log(error(err.message || "ERROR"));
@@ -22,10 +26,11 @@ const withAuthentication = Component => {
     componentDidMount() {
       this.listener = this.props.firebase.onAuthUserListener(
         authUser => {
-          this.props.onSetAuthUser(authUser);
-          SecureStore.setItemAsync("authUser", JSON.stringify(authUser))
-            .then(token => {
-              console.log("--auth0", typeof token, token);
+          this.props.onSetAuthUser(authUser.uid);
+          console.log("--fire auth", typeof authUser.uid, authUser.uid);
+          SecureStore.setItemAsync("authUser", authUser.uid)
+            .then(authUid => {
+              console.log("--auth from secure");
             })
             .catch(err => {
               console.log(error(err.message || "ERROR"));
@@ -35,17 +40,18 @@ const withAuthentication = Component => {
           SecureStore.deleteItemAsync("authUser")
             .then(() => {
               this.props.onSetAuthUser(null);
-              console.log("--remove authUser from store");
+              console.log("--remove authUser from secure");
             })
             .catch(err => {
               console.log(error(err.message || "ERROR"));
             });
         }
       );
+      
     }
 
     componentWillUnmount() {
-      this.listener();
+      this.listener;
     }
 
     render() {

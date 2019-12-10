@@ -1,6 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 
 // const config = {
 //   apiKey: process.env.REACT_APP_API_KEY,
@@ -11,15 +12,14 @@ import 'firebase/database';
 //   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 // };
 
-
-
 var config = {
-  apiKey: "AIzaSyD2a8v82aYyaUhCA3W_bdAkqZl7ptS6TCs",
-  authDomain: "givu-charity.firebaseapp.com",
-  databaseURL: "http://givu-charity.firebaseio.com",
-  projectId: "givu-charity",
-  storageBucket: "givu-charity.appspot.com",
-  messagingSenderId: "586438229111"
+  apiKey: "AIzaSyDn29dAXVJbOegmh8kw7YIdTcoqdbqGVm8",
+  authDomain: "tracking-app-01.firebaseapp.com",
+  databaseURL: "https://tracking-app-01.firebaseio.com",
+  projectId: "tracking-app-01",
+  storageBucket: "tracking-app-01.appspot.com",
+  messagingSenderId: "117786404780",
+  appId: "1:117786404780:web:bf34e5ef3acdccbebbfc09"
 };
 
 
@@ -36,8 +36,9 @@ class Firebase {
 
     this.auth = app.auth();
     this.db = app.database();
+    this.bucket = app.storage();
 
-    /* Social Sign In Method Provider */
+    /* Social */
 
     this.googleProvider = new app.auth.GoogleAuthProvider();
     this.facebookProvider = new app.auth.FacebookAuthProvider();
@@ -73,22 +74,21 @@ class Firebase {
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
 
-  // *** Merge Auth and DB User API *** //
+  // Merge //
 
-  onAuthUserListener = (next, fallback) =>
+  onAuthUserListener = (next, fallback) =>{
     this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
+        console.log("--auth listener check",authUser)
         this.user(authUser.uid)
-          .once('value')
+          .once("value")
           .then(snapshot => {
             const dbUser = snapshot.val();
-
+            console.log("oncesnap",snapshot)
             // default empty roles
-            if (!dbUser.roles) {
-              dbUser.roles = {};
-            }
-
-            // merge auth and db user
+            // if (!dbUser.roles) {
+            //   dbUser.roles = {};
+            // }
             authUser = {
               uid: authUser.uid,
               email: authUser.email,
@@ -97,18 +97,33 @@ class Firebase {
               ...dbUser,
             };
 
+            this.user(authUser.uid).update(authUser);
+
+            // this.userBucket(authUser.uid).child(authUser.uid).putString(String(authUser.uid));
+
             next(authUser);
           });
       } else {
         fallback();
       }
     });
-
-  // *** User API ***
+  } // merge auth and db user
+  // User API 
+  users = () => this.db.ref('users');
 
   user = uid => this.db.ref(`users/${uid}`);
 
-  users = () => this.db.ref('users');
+  // userProduct = uid => this.db.ref(`users/${uid}/products`).push();
+
+  
+
+  usersBucket = () => this.bucket.ref('users');
+
+  userBucket = uid => this.bucket.ref(`users/${uid}`);
+
+  // userImage = uid => this.bucket.ref(`users/${uid}/images`);
+
+  // userProduct = uid => this.bucket.ref(`users/${uid}/product`)
 
 }
 

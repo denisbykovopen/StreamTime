@@ -45,7 +45,7 @@ class SignInFacebook extends Component {
     const { error } = this.state;
 
     return (
-      <View>
+      <View style={{margin: 10}}>
         <Button 
             title="Sign In with Facebook"
             onPress={this.onSubmitFacebook}

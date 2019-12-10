@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 
-
 const withAuthorization = condition => Component => {
   class WithAuthorization extends React.Component {
     componentDidMount() {

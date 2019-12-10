@@ -11,7 +11,9 @@ import store from "./store";
 import { Provider } from "react-redux";
 import Firebase, { FirebaseContext } from "./Firebase";
 
-export default function App(props) {
+import { withAuthentication } from "./Session/index";
+
+function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
@@ -68,3 +70,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   }
 });
+
+export default App;

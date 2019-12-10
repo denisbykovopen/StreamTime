@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     padding: 10,
     width: "100%",
-    marginBottom: 10
+    
   },
   formButtonText: {
-    alignSelf: "center",
+    alignSelf: 'center',
     color: Colors.buttonTextColor,
-    fontSize: 18
+    fontSize: 18,
   }
 });
 

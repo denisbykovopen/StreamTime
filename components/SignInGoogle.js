@@ -45,10 +45,11 @@ class SignInGoogle extends Component {
     const { error } = this.state;
 
     return (
-      <View>
+      <View style={{margin: 10}}>
         <Button 
             title="Sign In with Google"
             onPress={this.onSubmitGoogle}
+            
         />
 
         {error && <Text>{error.message}</Text>}
