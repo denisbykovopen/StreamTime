@@ -5,13 +5,16 @@ import {
   StyleSheet,
   StatusBar,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from "react-native";
 import SignInForm from "../components/SignInForm";
 import SignInGoogle from "../components/SignInGoogle";
 import SignInFacebook from "../components/SignInFacebook";
 
 import Colors from "../constants/Colors";
+
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default class SignInScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -20,23 +23,33 @@ export default class SignInScreen extends React.Component {
   onSignIn = () => this.props.navigation.navigate("SignUp");
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar barStyle="dark-content" />
-        <Text style={styles.headerText}>Welcome to</Text>
-        <Text style={styles.headerTextBold}>Wheatsheaf Furniture!</Text>
-        <SignInForm />
-        <SignInGoogle />
-        <SignInFacebook />
-        <View style={styles.inner}>
-          <Text style={styles.text}>First time here? </Text>
-          <TouchableOpacity
-            onPress={this.onSignIn}
-            style={styles.underLineContainer}
-          >
-            <Text style={styles.text}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <ScrollView style={{ flex: 1 }}>
+        <KeyboardAwareScrollView
+          ref="scrollView"
+          keyboardShouldPersistTaps={"always"}
+          contentContainerStyle={{
+            flexGrow: 1 // this will fix scrollview scroll issue by passing parent view width and height to it
+          }}
+        >
+          <View style={styles.container}>
+            <StatusBar barStyle="dark-content" />
+            <Text style={styles.headerText}>Welcome to</Text>
+            <Text style={styles.headerTextBold}>Wheatsheaf Furniture!</Text>
+            <SignInForm />
+            <SignInGoogle />
+            <SignInFacebook />
+            <View style={styles.inner}>
+              <Text style={styles.text}>First time here? </Text>
+              <TouchableOpacity
+                onPress={this.onSignIn}
+                style={styles.underLineContainer}
+              >
+                <Text style={styles.text}>Sign Up</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </KeyboardAwareScrollView>
+      </ScrollView>
     );
   }
 }

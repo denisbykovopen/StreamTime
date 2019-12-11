@@ -34,9 +34,9 @@ class SignUpForm extends Component {
         });
         // this.props.navigation.navigate("Main");
       })
-    //   .then(() => {
-    //     return this.props.firebase.doSendEmailVerification();
-    //   })
+      .then((authUser) => {
+        return this.props.firebase.doSendEmailVerification();
+      })
       .then((authUser) => {
         this.props.navigation.navigate("Main");
       })

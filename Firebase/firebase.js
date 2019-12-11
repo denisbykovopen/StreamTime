@@ -68,7 +68,7 @@ class Firebase {
 
   doSendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
+      url: "noreply@tracking-app-01.firebaseapp.com",
     });
 
   doPasswordUpdate = password =>

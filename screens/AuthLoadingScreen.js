@@ -55,6 +55,6 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   withNavigation,
-  // withAuthentication,
+  withAuthentication,
   connect(mapStateToProps, mapDispatchToProps, null, { pure: false })
 )(AuthLoadingScreen);
