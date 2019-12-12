@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
-import Colors from '../.././constants/Colors';
+import Colors from "../.././constants/Colors";
+import Fonts from "../../constants/Fonts";
 
 const styles = StyleSheet.create({
   rootFailed: {
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     color: "red"
   },
   inputsContainer: {
-    padding: 20
+    // padding: 20
   },
   formButton: {
     backgroundColor: Colors.buttonColor,
@@ -32,7 +33,10 @@ const styles = StyleSheet.create({
   formButtonText: {
     alignSelf: "center",
     color: Colors.buttonTextColor,
-    fontSize: 18
+    fontSize: Fonts.xlarge
+  },
+  outer: {
+    flexDirection: "row-reverse"
   }
 });
 

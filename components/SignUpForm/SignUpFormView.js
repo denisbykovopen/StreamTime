@@ -17,38 +17,38 @@ const SignUpFormView = ({
         component={RFTextInput}
         name="name"
         disabled={submitting}
-        placeholder="Name"
+        label="Your Name"
       />
       <Field
         component={RFTextInput}
         name="location"
         disabled={submitting}
-        placeholder="Location"
+        label="Location"
       />
       <Field
         component={RFTextInput}
         name="occupation"
         disabled={submitting}
-        placeholder="Occupation"
+        label="Occupation"
       />
       <Field
         component={RFTextInput}
         name="yearsOfExpirience"
         disabled={submitting}
-        placeholder="Years of experience"
+        label="Years of experience"
       />
       <Field
         component={RFTextInput}
         name="email"
         disabled={submitting}
         placeholder="email"
-        label="Email"
+        label="Your Email"
       />
       <Field
         component={RFTextInput}
         name="password"
         disabled={submitting}
-        placeholder="password"
+        label="Your Password"
       />
 
       {!submitting && submitFailed && (

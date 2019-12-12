@@ -32,7 +32,6 @@ class SignUpForm extends Component {
           // emailVerified: authUser.emailVerified,
           // providerData: authUser.providerData
         });
-        // this.props.navigation.navigate("Main");
       })
       .then((authUser) => {
         return this.props.firebase.doSendEmailVerification();
@@ -44,7 +43,6 @@ class SignUpForm extends Component {
         if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
           error.message = ERROR_MSG_ACCOUNT_EXISTS;
         }
-
         this.setState({ error });
       });
   };

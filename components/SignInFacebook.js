@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import { Button, View, Text } from "react-native";
+import { Button, View, Text, StyleSheet } from "react-native";
 import { withFirebase } from "../Firebase/context";
+import Fonts from "../constants/Fonts";
 
 const ERROR_CODE_ACCOUNT_EXISTS =
   "auth/account-exists-with-different-credential";
@@ -49,6 +50,7 @@ class SignInFacebook extends Component {
         <Button 
             title="Sign In with Facebook"
             onPress={this.onSubmitFacebook}
+            style={styles.button}
         />
 
         {error && <Text>{error.message}</Text>}
@@ -56,5 +58,11 @@ class SignInFacebook extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  button: {
+    fontSize: Fonts.xlarge,
+  }
+})
 
 export default withFirebase(SignInFacebook);

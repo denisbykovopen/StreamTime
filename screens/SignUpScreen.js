@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   View,
   Text,
@@ -7,12 +8,17 @@ import {
   KeyboardAvoidingView,
   ScrollView
 } from "react-native";
+
 import SignUpForm from "../components/SignUpForm";
 
 import { Header } from "react-navigation";
+
 import Constants from "expo-constants";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+
+import Colors from ".././constants/Colors";
+import Fonts from "../constants/Fonts";
 
 export default class SignUpScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -33,19 +39,23 @@ export default class SignUpScreen extends React.Component {
       //     -(Header.HEIGHT + Constants.statusBarHeight * 2)
       //   }
       // >
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView
+        style={{ flex: 1 }}
+        centerContent={true}
+        showsVerticalScrollIndicator={false}
+      >
         <KeyboardAwareScrollView
           ref="scrollView"
           keyboardShouldPersistTaps={"always"}
           contentContainerStyle={{
-            flexGrow: 1 // this will fix scrollview scroll issue by passing parent view width and height to it
+            flexGrow: 1
           }}
         >
           <View style={styles.container}>
             <Text style={styles.headerText}>Sign Up</Text>
             <SignUpForm />
             <View style={styles.inner}>
-              <Text style={styles.text}>Already have an acc? </Text>
+              <Text style={styles.text}>Already have an account? </Text>
               <TouchableOpacity
                 onPress={this.onSignUp}
                 style={styles.underLineContainer}
@@ -64,17 +74,17 @@ export default class SignUpScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.bgColor,
     padding: 20
   },
   headerText: {
     alignSelf: "center",
-    fontSize: 24,
+    fontSize: Fonts.xxlarge,
     marginTop: 5,
-    marginBottom: 15
+    marginBottom: 5
   },
   underLineContainer: {
-    // textDecorationLine: 'underline',
+    fontSize: Fonts.xlarge,
     borderBottomWidth: 1,
     borderBottomColor: "black",
     paddingBottom: 1
@@ -86,6 +96,6 @@ const styles = StyleSheet.create({
     margin: 10
   },
   text: {
-    fontSize: 18
+    fontSize: Fonts.xlarge
   }
 });

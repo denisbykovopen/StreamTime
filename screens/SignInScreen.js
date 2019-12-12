@@ -13,6 +13,7 @@ import SignInGoogle from "../components/SignInGoogle";
 import SignInFacebook from "../components/SignInFacebook";
 
 import Colors from "../constants/Colors";
+import Fonts from "../constants/Fonts";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
@@ -23,7 +24,12 @@ export default class SignInScreen extends React.Component {
   onSignIn = () => this.props.navigation.navigate("SignUp");
   render() {
     return (
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView 
+        style={{ flex: 1 }}
+        // bounces={false}
+        centerContent={true}
+        showsVerticalScrollIndicator={false}
+      >
         <KeyboardAwareScrollView
           ref="scrollView"
           keyboardShouldPersistTaps={"always"}
@@ -57,7 +63,7 @@ export default class SignInScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.bgColor,
     padding: 20
   },
   inner: {
@@ -74,16 +80,18 @@ const styles = StyleSheet.create({
   },
   headerText: {
     alignSelf: "center",
-    fontSize: 24,
-    marginTop: 50
+    fontSize: Fonts.xxlarge,
+    marginTop: 50,
+    
   },
   headerTextBold: {
     alignSelf: "center",
     fontWeight: "bold",
-    fontSize: 24,
-    margin: 10
+    fontSize: Fonts.xxlarge,
+    margin: 10,
+    marginBottom: 75
   },
   text: {
-    fontSize: 18
+    fontSize: Fonts.xlarge
   }
 });
