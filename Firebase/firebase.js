@@ -46,6 +46,9 @@ class Firebase {
   }
 
   // *** Auth API ***
+  doSignInWithCredential = (credential) =>
+    this.auth.signInWithCredential(credential);
+
 
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
