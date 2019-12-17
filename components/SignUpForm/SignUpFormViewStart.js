@@ -4,12 +4,13 @@ import { Field } from "redux-form";
 import RFTextInput from "../../common/RFTextInput";
 import styles from "./styles";
 
-const SignUpFormView = ({
+const SignUpFormViewStart = ({
   handleSubmit,
   submitFailed,
   submitSucceeded,
   submitting,
-  valid
+  valid,
+  onPress
 }) => (
   <View>
     <View style={styles.inputsContainer}>
@@ -37,7 +38,8 @@ const SignUpFormView = ({
         disabled={submitting}
         label="Years of experience"
       />
-      <Field
+
+      {/* <Field
         component={RFTextInput}
         name="email"
         disabled={submitting}
@@ -49,7 +51,7 @@ const SignUpFormView = ({
         name="password"
         disabled={submitting}
         label="Your Password"
-      />
+      /> */}
 
       {!submitting && submitFailed && (
         <Text style={styles.rootFailed}>Error</Text>
@@ -61,10 +63,10 @@ const SignUpFormView = ({
 
     <TouchableOpacity
       disabled={!valid || submitting}
-      onPress={handleSubmit}
+      onPress={onPress}
       style={styles.formButton}
     >
-      <Text style={styles.formButtonText}>Sign Up</Text>
+      <Text style={styles.formButtonText}>Next</Text>
     </TouchableOpacity>
 
     {/* <Button
@@ -72,7 +74,8 @@ const SignUpFormView = ({
       onPress={handleSubmit}
       title="Submit"
     /> */}
+
   </View>
 );
 
-export default SignUpFormView;
+export default SignUpFormViewStart;

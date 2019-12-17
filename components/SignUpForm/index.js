@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import SignUpFormView from "./SignUpFormRF";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import styles from "./styles";
 import { withFirebase } from "../../Firebase/context";
 import { withNavigation } from 'react-navigation';
+import SignUpFormViewStart from './SignUpFormRFStart';
+import SignUpFormViewEnd from "./SignUpFormRFEnd";
 
 const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
 
@@ -16,27 +17,41 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
 `;
 
 class SignUpForm extends Component {
-  state = { error: null };
-  handleSubmitSignUp = ({ name, location, occupation, yearsOfExpirience, email, password }) => {
+  state = {
+    error: null,
+    move: false
+  };
+
+  onMove = () => {
+    this.setState(
+      prevState => ({
+        move: !prevState.move
+      }),
+      () => console.log(this.state.move)
+    );
+  };
+
+  handleSubmitSignUp = ({
+    name,
+    location,
+    occupation,
+    yearsOfExpirience,
+    email,
+    password
+  }) => {
     this.props.firebase
-      .doCreateUserWithEmailAndPassword(email,password)
+      .doCreateUserWithEmailAndPassword(email, password)
       .then(authUser => {
         console.log("--auto", authUser.user.uid);
+        // this.props.firebase.doSendEmailVerification();
         this.props.firebase.user(authUser.user.uid).set({
           name,
           location,
           occupation,
-          yearsOfExpirience,
-          // email,
-          // email: authUser.email,
-          // emailVerified: authUser.emailVerified,
-          // providerData: authUser.providerData
+          yearsOfExpirience
         });
       })
-      .then((authUser) => {
-        return this.props.firebase.doSendEmailVerification();
-      })
-      .then((authUser) => {
+      .then(() => {
         this.props.navigation.navigate("Main");
       })
       .catch(error => {
@@ -50,7 +65,30 @@ class SignUpForm extends Component {
   render() {
     return (
       <View contentContainerStyle={styles.formContainer}>
-        <SignUpFormView onSubmit={this.handleSubmitSignUp} />
+        {!this.state.move && (
+          <View style={styles.formInnerContainer}>
+            <View style={styles.stepContainer}>
+              <View style={styles.stepInnerContainer}>
+                <Text style={styles.stepText}>Step 1/2</Text>
+                <View style={styles.stepLine}></View>
+              </View>
+              <View style={styles.stepLineNext}></View>
+            </View>
+            <SignUpFormViewStart onPress={this.onMove} />
+          </View>
+        )}
+        {this.state.move && (
+          <View style={styles.formInnerContainer}>
+            <View style={styles.stepContainer}>
+              <View style={styles.stepLine}></View>
+              <View style={styles.stepInnerContainer}>
+                <Text style={styles.stepText}>Step 2/2</Text>
+                <View style={styles.stepLine}></View>
+              </View>
+            </View>
+            <SignUpFormViewEnd onSubmit={this.handleSubmitSignUp} />
+          </View>
+        )}
       </View>
     );
   }

@@ -1,10 +1,17 @@
 import { reduxForm } from "redux-form";
-import SignUpFormView from "./SignUpFormView";
 import { connect } from "react-redux";
+import SignUpFormViewEnd from './SignUpFormViewEnd';
 
 const FORM = "signUp";
 
-const validate = ({ name, location, occupation, yearsOfExpirience, email, password }) => {
+const validate = ({ 
+  // name, 
+  // location, 
+  // occupation, 
+  // yearsOfExpirience, 
+  email, 
+  password
+ }) => {
   const errors = {};
   if (password === undefined) {
     errors.password = "Mandatory field";
@@ -26,6 +33,7 @@ export default connect(
     form: FORM,
     validate,
     enableReinitialize: true,
-    destroyOnUnmount: false
-  })(SignUpFormView)
+    destroyOnUnmount: false,
+    forceUnregisterOnUnmount: true,
+  })(SignUpFormViewEnd)
 );

@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 import Colors from "../.././constants/Colors";
 import Fonts from "../../constants/Fonts";
-import Layout from "../../constants/Layout";
 
 const styles = StyleSheet.create({
   rootFailed: {
@@ -26,29 +25,18 @@ const styles = StyleSheet.create({
   },
   formButton: {
     backgroundColor: Colors.buttonColor,
-    borderRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
-    padding: Layout.window.width * 0.025,
-    height: Layout.window.width * 0.15,
-    width: Layout.window.width * 0.5,
-    marginBottom: Layout.window.width * 0.05,
-    alignItems: 'center',
-    justifyContent: 'center'
+    borderRadius: 25,
+    padding: 10,
+    width: "100%",
+    marginBottom: 10
   },
   formButtonText: {
     alignSelf: "center",
     color: Colors.buttonTextColor,
-    fontSize: Fonts.xlarge,
-    fontWeight: 'bold'
+    fontSize: Fonts.xlarge
   },
   outer: {
-    flexDirection: "row-reverse",
-    // justifyContent: 'center',
-    // alignItems: 'center'
-  },
-  buttonsContainer: {
-    flexDirection: 'row',
-    // alignItems: 'center',
-    justifyContent: 'space-between'
+    flexDirection: "row-reverse"
   }
 });
 

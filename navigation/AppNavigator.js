@@ -5,30 +5,65 @@ import SignUpScreen from "../screens/SignUpScreen";
 import MainTabNavigator from './MainTabNavigator';
 import PasswordChangeScreen from '../screens/PasswordChangeScreen';
 import PasswordForgetScreen from '../screens/PasswordForgetScreen';
+import TermsScreen from '../screens/TermsScreen';
+import PrivacyScreen from '../screens/PrivacyScreen';
 
 const AuthStack = createStackNavigator({
   SignIn: {
-    screen: SignInScreen
+    screen: SignInScreen,
+    navigationOptions: () => ({
+      headerBackTitle: "back",
+    })
   },
   SignUp: {
-    screen: SignUpScreen
-  }
-});
-
-const PassStack = createStackNavigator({
-  Forget: {
-    screen: PasswordForgetScreen,
+    screen: SignUpScreen,
     navigationOptions: () => ({
       headerBackTitle: "back"
     })
   },
+  Forget: {
+    screen: PasswordForgetScreen,
+    navigationOptions: () => ({
+      headerBackTitle: "back",
+      headerTitle: "X",
+    })
+  },
   Change: {
     screen: PasswordChangeScreen,
-    // navigationOptions: () => ({
-    //   headerBackTitle: "back"
-    // })
-  }
+    navigationOptions: () => ({
+      headerBackTitle: "back"
+    })
+  },
+  Terms: {
+    screen: TermsScreen,
+    navigationOptions: () => ({
+      headerBackTitle: "back"
+    })
+  },
+  Privacy: {
+    screen: PrivacyScreen,
+    navigationOptions: () => ({
+      headerBackTitle: "back"
+    })
+  },
+  // Forget: PasswordForgetScreen,
 });
+
+// const PassStack = createStackNavigator({
+//   Forget: {
+//     screen: PasswordForgetScreen,
+//     navigationOptions: () => ({
+//       headerBackTitle: "back",
+//       headerTitle: "X",
+//     })
+//   },
+//   Change: {
+//     screen: PasswordChangeScreen,
+//     navigationOptions: () => ({
+//       headerBackTitle: "back"
+//     })
+//   }
+// });
 
 export default createAppContainer(
   createSwitchNavigator(
@@ -36,7 +71,8 @@ export default createAppContainer(
       AuthLoading: AuthLoadingScreen,
       Auth: AuthStack,
       Main: MainTabNavigator,
-      Pass: PassStack,
+      // Pass: PassStack,
+      // Forget: PasswordForgetScreen
     },
     {
       initialRouteName: "AuthLoading"

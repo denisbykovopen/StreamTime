@@ -2,13 +2,15 @@
 import React from 'react';
 import { TextInput, Text, View, StyleSheet } from 'react-native';
 import Fonts from '../constants/Fonts';
-
+import Layout from '../constants/Layout';
+// ...restInput
 const RFTextInput = ({
   // placeholder,
-  input: { onBlur, onChange, onFocus, value },
+  input: { onBlur, onChange, onFocus, value, ...restInput },
   meta: { error, touched, valid },
   disabled,
-  label
+  label,
+  autoFocus
 }) => ( 
   <View>
     <Text style={styles.text}>{label}</Text>
@@ -30,6 +32,8 @@ const RFTextInput = ({
         },
       ]}
       // placeholder={placeholder}
+      autoFocus={autoFocus}
+      {...restInput}
     />
     {!valid && touched && <Text style={styles.rootError}>{error}</Text>}
   </View>
@@ -40,17 +44,19 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     borderWidth: 1,
     borderRadius: 15,
-    height: 40,
-    paddingTop: 10,
-    padding: 10,
+    height: Layout.window.height * 0.085,
+    paddingTop: Layout.window.height * 0.025,
+    padding: Layout.window.height * 0.025,
     fontSize: Fonts.xlarge,
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: Layout.window.width * 0.025,
+    marginBottom: Layout.window.width * 0.05,
     backgroundColor: 'white',
     alignItems: 'center',
   },
   rootError: {
     color: 'red',
+    marginBottom: 5,
+    marginTop: -5,
   },
   text: {
     fontSize: Fonts.xlarge,

@@ -10,20 +10,21 @@ class AuthLoadingScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
+  
   constructor(props) {
     super(props);
 
-    SecureStore.getItemAsync("authUser")
-      .then(authUser => {
-        console.log("--secure auth", typeof authUser, authUser);
-        this.props.onSetAuthUser(authUser);
-        this.props.navigation.navigate(
-          this.props.authUser != null ? "Main" : "Auth"
-        );
-      })
-      .catch(err => {
-        console.log(error(err.message || "ERROR"));
-      });
+    // SecureStore.getItemAsync("authUser")
+    //   .then(authUser => {
+    //     console.log("--secure auth", typeof authUser, authUser);
+    //     this.props.onSetAuthUser(authUser);
+    //     this.props.navigation.navigate(
+    //       this.props.authUser != null ? "Main" : "Auth"
+    //     );
+    //   })
+    //   .catch(err => {
+    //     console.log(error(err.message || "ERROR"));
+    //   });
   }
 
   render() {

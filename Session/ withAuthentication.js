@@ -4,26 +4,27 @@ import { compose } from "recompose";
 
 import { withFirebase } from "../Firebase";
 import * as SecureStore from "expo-secure-store";
+import { withNavigation } from 'react-navigation';
 
 const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     constructor(props) {
       super(props);
-      
-      SecureStore.getItemAsync("authUser")
-        .then(authUser => {
-          console.log("--secure auth", typeof authUser, authUser);
-          this.props.onSetAuthUser(authUser);
-          // this.props.navigation.navigate(
-          //   this.props.authUser != null ? "Main" : "Auth"
-          // )
-        })
-        .catch(err => {
-          console.log(error(err.message || "ERROR"));
-        });
     }
 
     componentDidMount() {
+      SecureStore.getItemAsync("authUser")
+      .then(authUser => {
+        console.log("--secure auth", typeof authUser, authUser);
+        this.props.onSetAuthUser(authUser);
+        this.props.navigation.navigate(
+          authUser != null ? "Main" : "Auth"
+        )
+      })
+      .catch(err => {
+        console.log(error(err.message || "ERROR"));
+      });
+      
       this.listener = this.props.firebase.onAuthUserListener(
         authUser => {
           this.props.onSetAuthUser(authUser.uid);
@@ -65,6 +66,7 @@ const withAuthentication = Component => {
 
   return compose(
     withFirebase,
+    withNavigation,
     connect(null, mapDispatchToProps)
   )(WithAuthentication);
 };

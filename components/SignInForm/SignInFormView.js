@@ -4,6 +4,8 @@ import { Field } from "redux-form";
 import RFTextInput from "../../common/RFTextInput";
 import styles from "./styles";
 import ForgetButton from './ForgetButton';
+import SignInGoogle from '../../components/SignInGoogle';
+import SignInFacebook from '../../components/SignInFacebook';
 
 const UserFormView = ({
   handleSubmit,
@@ -13,7 +15,7 @@ const UserFormView = ({
   valid
 }) => (
   <View>
-    <View style={styles.inputsContainer}>     
+    <View style={styles.inputsContainer}>
       <Field
         component={RFTextInput}
         name="email"
@@ -38,19 +40,17 @@ const UserFormView = ({
     <View style={styles.outer}>
       <ForgetButton />
     </View>
-    <TouchableOpacity
-      disabled={!valid || submitting}
-      onPress={handleSubmit}
-      style={styles.formButton}
-    >
-      <Text style={styles.formButtonText}>Log In</Text>
-    </TouchableOpacity>
-    {/* <Button
-      disabled={!valid || submitting}
-      onPress={handleSubmit}
-      title="Submit"
-      style={styles.formButton}
-    /> */}
+    <View style={styles.buttonsContainer}>
+      <SignInFacebook />
+      <SignInGoogle />
+      <TouchableOpacity
+        disabled={!valid || submitting}
+        onPress={handleSubmit}
+        style={styles.formButton}
+      >
+        <Text style={styles.formButtonText}>Log In</Text>
+      </TouchableOpacity>
+    </View>
   </View>
 );
 

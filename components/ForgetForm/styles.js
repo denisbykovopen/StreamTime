@@ -28,9 +28,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.buttonColor,
     borderRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
     padding: Layout.window.width * 0.025,
-    height: Layout.window.width * 0.15,
-    width: Layout.window.width * 0.5,
+    // width: Layout.window.width * 0.5,
     marginBottom: Layout.window.width * 0.05,
+    height: Layout.window.width * 0.15,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -41,14 +41,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   outer: {
-    flexDirection: "row-reverse",
-    // justifyContent: 'center',
-    // alignItems: 'center'
-  },
-  buttonsContainer: {
-    flexDirection: 'row',
-    // alignItems: 'center',
-    justifyContent: 'space-between'
+    flexDirection: "row-reverse"
   }
 });
 

@@ -1,7 +1,10 @@
 import React, {Component} from "react";
-import { Button, View, Text, StyleSheet } from "react-native";
+import { Button, View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { withFirebase } from "../Firebase/context";
 import Fonts from "../constants/Fonts";
+import g from ".././assets/images/g2x.png";
+import Layout from "../constants/Layout";
+import Colors from "../constants/Colors";
 
 const ERROR_CODE_ACCOUNT_EXISTS =
   "auth/account-exists-with-different-credential";
@@ -46,22 +49,35 @@ class SignInGoogle extends Component {
     const { error } = this.state;
 
     return (
-      <View style={{margin: 10}}>
-        <Button 
-            title="Sign In with Google"
-            onPress={this.onSubmitGoogle}
-             style={styles.button}
+      <View style={styles.buttonContainer}>
+      <TouchableOpacity 
+        onPress={this.onSubmitFacebook} 
+        style={styles.button}
+      >
+        <Image
+          source={g}
+          style={styles.buttonImage} 
         />
+      </TouchableOpacity>
 
-        {error && <Text>{error.message}</Text>}
-      </View>
+      {error && <Text>{error.message}</Text>}
+    </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  button: {
-    fontSize: Fonts.xlarge,
+  button:{
+    width: Layout.window.width * 0.15,
+    height: Layout.window.width * 0.15,
+    borderRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.gButtonColor,
+  },
+  buttonImage: {
+    resizeMode: 'center'
   }
 })
+
 export default withFirebase(SignInGoogle);

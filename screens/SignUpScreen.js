@@ -19,6 +19,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 
 import Colors from ".././constants/Colors";
 import Fonts from "../constants/Fonts";
+import Layout from "../constants/Layout";
 
 export default class SignUpScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -41,12 +42,12 @@ export default class SignUpScreen extends React.Component {
       // >
       <ScrollView
         style={{ flex: 1 }}
-        centerContent={true}
+        // centerContent={true}
         showsVerticalScrollIndicator={false}
       >
         <KeyboardAwareScrollView
           ref="scrollView"
-          keyboardShouldPersistTaps={"always"}
+          // keyboardShouldPersistTaps={"always"}
           contentContainerStyle={{
             flexGrow: 1
           }}
@@ -60,7 +61,7 @@ export default class SignUpScreen extends React.Component {
                 onPress={this.onSignUp}
                 style={styles.underLineContainer}
               >
-                <Text style={styles.text}>Sign In</Text>
+                <Text style={styles.text}>Log In</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -75,13 +76,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.bgColor,
-    padding: 20
+    padding: Layout.window.width * 0.075,
+    // height: Layout.window.height
   },
   headerText: {
     alignSelf: "center",
     fontSize: Fonts.xxlarge,
-    marginTop: 5,
-    marginBottom: 5
+    marginTop: Layout.window.height * 0.05,
+    marginBottom: Layout.window.height * 0.05,
   },
   underLineContainer: {
     fontSize: Fonts.xlarge,
@@ -93,7 +95,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    margin: 10
+    margin: Layout.window.width * 0.025,
+    marginBottom: Layout.window.width * 0.2
   },
   text: {
     fontSize: Fonts.xlarge

@@ -9,13 +9,14 @@ import {
   ScrollView
 } from "react-native";
 import SignInForm from "../components/SignInForm";
-import SignInGoogle from "../components/SignInGoogle";
-import SignInFacebook from "../components/SignInFacebook";
+// import SignInGoogle from "../components/SignInGoogle";
+// import SignInFacebook from "../components/SignInFacebook";
 
 import Colors from "../constants/Colors";
 import Fonts from "../constants/Fonts";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import Layout from "../constants/Layout";
 
 export default class SignInScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -25,9 +26,9 @@ export default class SignInScreen extends React.Component {
   render() {
     return (
       <ScrollView 
-        style={{ flex: 1 }}
+        contentContainerStyle={{ flex: 1, height: '100%' }}
         // bounces={false}
-        centerContent={true}
+        // centerContent={true}
         showsVerticalScrollIndicator={false}
       >
         <KeyboardAwareScrollView
@@ -40,10 +41,8 @@ export default class SignInScreen extends React.Component {
           <View style={styles.container}>
             <StatusBar barStyle="dark-content" />
             <Text style={styles.headerText}>Welcome to</Text>
-            <Text style={styles.headerTextBold}>Wheatsheaf Furniture!</Text>
+            <Text style={styles.headerTextBold}>Sweetland Solutions!</Text>
             <SignInForm />
-            <SignInGoogle />
-            <SignInFacebook />
             <View style={styles.inner}>
               <Text style={styles.text}>First time here? </Text>
               <TouchableOpacity
@@ -64,7 +63,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.bgColor,
-    padding: 20
+    padding: Layout.window.width * 0.075,
+    // height: Layout.window.height
   },
   inner: {
     flexDirection: "row",
@@ -81,15 +81,16 @@ const styles = StyleSheet.create({
   headerText: {
     alignSelf: "center",
     fontSize: Fonts.xxlarge,
-    marginTop: 50,
-    
+    marginTop: Layout.window.width * 0.25,
+    color: Colors.headerTextColor,
   },
   headerTextBold: {
     alignSelf: "center",
     fontWeight: "bold",
     fontSize: Fonts.xxlarge,
-    margin: 10,
-    marginBottom: 75
+    margin: Layout.window.width * 0.05,
+    marginBottom: Layout.window.width * 0.25,
+    color: Colors.headerTextColor,
   },
   text: {
     fontSize: Fonts.xlarge
