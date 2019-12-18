@@ -4,16 +4,16 @@ import Icon from "@expo/vector-icons/FontAwesome";
 import Layout from "../constants/Layout";
 import { withNavigation } from "react-navigation";
 
-const SIZE = Layout.window.width * 0.25;
+const SIZE = Layout.window.width * 0.20;
 
 class AddButton extends Component {
   mode = new Animated.Value(0);
   toggleView = () => {
+    this.props.navigation.navigate('Add');
     Animated.timing(this.mode, {
       toValue: this.mode._value === 0 ? 1 : 0,
       duration: 300
-    }).start(); 
-    ()=>this.props.navigation.navigate('Add')
+    }).start();
   };
   render() {
     const firstX = this.mode.interpolate({
@@ -52,7 +52,12 @@ class AddButton extends Component {
       <View
         style={{
           position: "absolute",
-          alignItems: "center"
+          // alignItems: "center"
+          // alignSelf: 'center',
+          // justifyContent: 'center',
+          // bottom: Layout.window.height * 0.075,
+          // top: 0, left: 0, right: 0, bottom: 0,
+          // left: 0
         }}
       >
         <Animated.View

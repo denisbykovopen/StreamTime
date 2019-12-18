@@ -54,13 +54,13 @@ class SignInFacebook extends Component {
       console.log("--fb permissions", type, token);
 
       if (type === "success") {
-        const credential = this.props.firebase.facebookProvider.credential(
+        const credential = firebase.auth.FacebookAuthProvider.credential(
           token
         );
         console.log("--fb/fire credential", credential);
         
         this.props.firebase.auth.signInWithCredential(credential)
-        console.log("--fb/fire auth", socialAuthUser)
+        // console.log("--fb/fire auth", socialAuthUser)
 
           .then(socialAuthUser => {
             // user in base too
