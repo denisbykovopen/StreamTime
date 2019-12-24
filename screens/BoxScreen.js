@@ -1,17 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Layout from "../constants/Layout";
 import Colors from "../constants/Colors";
 
-export default class AddProjectScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    header: null
-  });
+export default class BoxScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <StatusBar barStyle="dark-content" />
-        <Text>/AddProjectScreen</Text>
+        <Text>/ProjectsScreen</Text>
       </View>
     );
   }

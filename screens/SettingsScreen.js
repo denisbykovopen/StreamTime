@@ -3,11 +3,11 @@ import { View, Text, StyleSheet } from "react-native";
 import Layout from "../constants/Layout";
 import Colors from "../constants/Colors";
 
-export default class ProjectsScreen extends React.Component {
+export default class SettingsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>/ProjectsScreen</Text>
+        <Text>/AddProjectScreen</Text>
       </View>
     );
   }

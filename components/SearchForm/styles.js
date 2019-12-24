@@ -23,14 +23,17 @@ const styles = StyleSheet.create({
   },
   inputsContainer: {
     // padding: 20
-    // height: '50%'
+    // flexDirection: 'row',
+    // position: 'relative',
+    // alignItems: 'center',
+    // justifyContent: "center", marginRight: 5 
   },
   formButton: {
     backgroundColor: Colors.buttonColor,
     borderRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
     padding: Layout.window.width * 0.025,
     // width: Layout.window.width * 0.5,
-    // marginBottom: Layout.window.width * 0.05,
+    marginBottom: Layout.window.width * 0.05,
     height: Layout.window.width * 0.15,
     alignItems: 'center',
     justifyContent: 'center'
@@ -41,8 +44,17 @@ const styles = StyleSheet.create({
     fontSize: Fonts.xlarge,
     fontWeight: 'bold'
   },
-  // outer: {
-  //   flexDirection: "row-reverse"
+  outer: {
+    flexDirection: "row-reverse"
+  },
+  // searchIcon: {
+  //   position: 'absolute', 
+  //   // right: 0, top: 15, width: 20, height: 20
+  // },
+  // field: {
+  //   // position: 'relative'
+  //   width: Layout.window.width,
+
   // }
 });
 

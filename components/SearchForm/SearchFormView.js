@@ -1,26 +1,30 @@
 import React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { Field } from "redux-form";
-import RFTextInput from "../../common/RFTextInput";
+import SearchInput from "./SearchInput";
 import styles from "./styles";
 
-const ForgetFormView = ({
+
+const SearchFormView = ({
   handleSubmit,
   submitFailed,
   submitSucceeded,
   submitting,
-  valid
+  valid,
+  handleChange,
+  onSubmit
 }) => (
   <View>
-    <View style={styles.inputsContainer}>     
+    <View style={styles.inputsContainer}>  
       <Field
-        component={RFTextInput}
-        name="email"
+        component={SearchInput}
+        name="name"
         disabled={submitting}
-        // placeholder="email"
-        label="Your Email"
-        autoFocus={true}
+        placeholder={"Search"}
+        onChange={handleChange}
+        // onSubmit={handleSubmit}
       />
+
       {!submitting && submitFailed && (
         <Text style={styles.rootFailed}>Error</Text>
       )}
@@ -28,14 +32,7 @@ const ForgetFormView = ({
         <Text style={styles.rootSucceeded}>Success</Text>
       )}
     </View>
-    <TouchableOpacity
-      disabled={!valid || submitting}
-      onPress={handleSubmit}
-      style={styles.formButton}
-    >
-      <Text style={styles.formButtonText}>Next</Text>
-    </TouchableOpacity>
   </View>
 );
 
-export default ForgetFormView;
+export default SearchFormView;

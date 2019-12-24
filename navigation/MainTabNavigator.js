@@ -7,79 +7,95 @@ import AddProjectScreen from '../screens/AddProjectScreen';
 import AddButton from '../common/AddButton';
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
+import { SettingsIcon } from '../common/SettingsIcon';
+import HomeIcon from '../common/HomeIcon';
+import ProductsScreen from '../screens/ProductsScreen';
+import RocketIcon from '../common/RocketIcon';
+import BoxScreen from '../screens/BoxScreen';
+import BoxIcon from '../common/BoxIcon';
+import SettingsScreen from '../screens/SettingsScreen';
+import AddIcon from '../common/AddIcon';
 
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
   }
 );
-
 HomeStack.navigationOptions = {
   tabBarLabel: null,
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
+  tabBarIcon: ({ focused }) => <HomeIcon focused={focused} />
 };
-
 HomeStack.path = '';
 
-const AddStack = createStackNavigator({
-  Add: AddProjectScreen,
-});
 
+const ProductsStack = createStackNavigator({
+  Producs: ProductsScreen
+})
+ProductsStack.navigationOptions = {
+  tabBarLabel: null,
+  tabBarIcon: ({ focused }) => <RocketIcon focused={focused} />
+};
+ProductsStack.path = '';
+
+
+const AddStack = createStackNavigator({
+  Add: AddProjectScreen
+});
 AddStack.navigationOptions = {
   tabBarLabel: null,
-  tabBarIcon: <AddButton />
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon
-  //     focused={focused}
-  //     name={
-  //       Platform.OS === 'ios'
-  //         ? `ios-add-circle${focused ? '' : '-outline'}`
-  //         : 'md-add-circle'
-  //     }
-  //   />
-  // ),
+  tabBarIcon: ({ focused }) => <AddIcon focused={focused} />
 };
+AddStack.path = '';
 
+
+const BoxStack = createStackNavigator({
+  Box: BoxScreen
+});
+BoxStack.navigationOptions = {
+  tabBarLabel: null,
+  tabBarIcon: ({ focused }) => <BoxIcon focused={focused} />
+};
+BoxStack.path = '';
+
+
+const SettingsStack = createStackNavigator({
+  Settings: SettingsScreen
+});
+SettingsStack.navigationOptions = {
+  tabBarLabel: null,
+  tabBarIcon: ({ focused }) => <SettingsIcon focused={focused} />
+};
+SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  AddStack
+  ProductsStack,
+  AddStack,
+  BoxStack,
+  SettingsStack
 },{
   tabBarOptions: { 
     showLabel: false,
     activeTintColor: Colors.buttonColor,
     inactiveTintColor: Colors.black,
     style: {
-      // borderTopLeftRadius: 380.5, 
-      // borderTopRightRadius:21,
-      // backgroundColor:"#000000",
       position:'absolute',
       bottom: 0,
-      display: 'flex',
-      // padding:10,
-      // width: DEVICE_WIDTH,
+      // display: 'flex',
+      // alignItems: 'center',
+      // justifyContent: 'center',
+      width: Layout.window.width,
       height: Layout.window.height * 0.125,
-      zIndex: 8 ,
+      zIndex: 1,
       backgroundColor: Colors.w,
       borderTopLeftRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
       borderTopRightRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
-      // borderRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
-      borderTopColor: Colors.w,
-      width: Layout.window.width,
+      borderTopColor: Colors.w
     },
-    tabStyle: {
-      borderTopLeftRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
-      borderTopRightRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
-    }
+    // tabStyle: {
+    //   borderTopLeftRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
+    //   borderTopRightRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
+    // }
    }
 });
 

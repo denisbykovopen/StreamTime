@@ -14,17 +14,17 @@ class AuthLoadingScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    // SecureStore.getItemAsync("authUser")
-    //   .then(authUser => {
-    //     console.log("--secure auth", typeof authUser, authUser);
-    //     this.props.onSetAuthUser(authUser);
-    //     this.props.navigation.navigate(
-    //       this.props.authUser != null ? "Main" : "Auth"
-    //     );
-    //   })
-    //   .catch(err => {
-    //     console.log(error(err.message || "ERROR"));
-    //   });
+    global.XMLHttpRequest =
+      global.originalXMLHttpRequest || global.XMLHttpRequest;
+    global.FormData = global.originalFormData || global.FormData;
+
+    if (window.FETCH_SUPPORT) {
+      window.FETCH_SUPPORT.blob = false;
+    } else {
+      global.Blob = global.originalBlob || global.Blob;
+      global.FileReader = global.originalFileReader || global.FileReader;
+    }
+
   }
 
   render() {

@@ -13,6 +13,15 @@ const withAuthentication = Component => {
     }
 
     componentDidMount() {
+      // SecureStore.deleteItemAsync("authUser")
+      // .then(() => {
+      //   this.props.onSetAuthUser(null);
+      //   console.log("--remove authUser from secure");
+      // })
+      // .catch(err => {
+      //   console.log(error(err.message || "ERROR"));
+      // });
+
       SecureStore.getItemAsync("authUser")
       .then(authUser => {
         console.log("--secure auth", typeof authUser, authUser);

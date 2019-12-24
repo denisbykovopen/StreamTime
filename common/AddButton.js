@@ -3,6 +3,10 @@ import { Animated, TouchableHighlight, View } from "react-native";
 import Icon from "@expo/vector-icons/FontAwesome";
 import Layout from "../constants/Layout";
 import { withNavigation } from "react-navigation";
+import Colors from "../constants/Colors";
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+
 
 const SIZE = Layout.window.width * 0.20;
 
@@ -10,10 +14,10 @@ class AddButton extends Component {
   mode = new Animated.Value(0);
   toggleView = () => {
     this.props.navigation.navigate('Add');
-    Animated.timing(this.mode, {
-      toValue: this.mode._value === 0 ? 1 : 0,
-      duration: 300
-    }).start();
+    // Animated.timing(this.mode, {
+    //   toValue: this.mode._value === 0 ? 1 : 0,
+    //   duration: 300
+    // }).start();
   };
   render() {
     const firstX = this.mode.interpolate({
@@ -52,12 +56,16 @@ class AddButton extends Component {
       <View
         style={{
           position: "absolute",
-          // alignItems: "center"
-          // alignSelf: 'center',
-          // justifyContent: 'center',
-          // bottom: Layout.window.height * 0.075,
-          // top: 0, left: 0, right: 0, bottom: 0,
-          // left: 0
+          bottom: Layout.window.height * 0.05,
+          borderWidth: Layout.window.width * 0.05,
+          borderRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
+          borderColor: Colors.bgColor,
+          shadowColor: Colors.shadowColor,
+          shadowOpacity: 1.0,
+          shadowOffset:{  width: 0,  height: 0,  },
+          shadowRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
+          elevation: 1,
+          alignItems: 'center'
         }}
       >
         <Animated.View
@@ -145,7 +153,17 @@ class AddButton extends Component {
               transform: [{ rotate: rotation }]
             }}
           >
-            <Icon name="plus" size={24} color="#F8F8F8" />
+            <AntDesign 
+              name="pluscircle" 
+              size={50} 
+              color = {this.props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+              style={{ 
+                backgroundColor:"white",
+                borderRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
+                borderWidth: Layout.window.width * 0.05,
+                borderColor: Colors.bgColor,
+               }}
+            />
           </Animated.View>
         </TouchableHighlight>
       </View>

@@ -5,7 +5,7 @@ import Fonts from '../constants/Fonts';
 import Layout from '../constants/Layout';
 // ...restInput
 const RFTextInput = ({
-  // placeholder,
+  placeholder,
   input: { onBlur, onChange, onFocus, value, ...restInput },
   meta: { error, touched, valid },
   disabled,
@@ -28,10 +28,11 @@ const RFTextInput = ({
         styles.rootInput,
         {
           color: disabled ? 'gray' : 'black',
-          borderColor: !valid && touched ? 'red' : 'white'
+          borderColor: !valid && touched ? 'red' : 'white',
+          // flex: 1
         },
       ]}
-      // placeholder={placeholder}
+      placeholder={placeholder}
       autoFocus={autoFocus}
       {...restInput}
     />
@@ -45,6 +46,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 15,
     height: Layout.window.height * 0.085,
+    // width: '100%',
+    // flex: 1,
     paddingTop: Layout.window.height * 0.025,
     padding: Layout.window.height * 0.025,
     fontSize: Fonts.xlarge,
