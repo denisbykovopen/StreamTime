@@ -110,13 +110,23 @@ class Firebase {
         fallback();
       }
     });
-  } // merge auth and db user
+  } 
+  
   // User API 
+
+  // userUid = this.auth.currentUser.uid;
+
   users = () => this.db.ref('users');
 
   user = uid => this.db.ref(`users/${uid}`);
 
-  // userProduct = uid => this.db.ref(`users/${uid}/products`).push();
+  userProjects = (uid) =>  this.db.ref(`users/${uid}`).child(`projects`);
+
+  userProject = (uid, productName) => this.db.ref(`users/${uid}`).child(`projects`).child(`${productName}`);
+
+  userProductComponent = (uid, productName, componentName) => this.db.ref(`users/${uid}`).child(`projects`).child(`${productName}`).child('components').child(`${componentName}`);
+
+  userProcess = (uid, productName, componentName, processName) => this.db.ref(`users/${uid}/projects/${productName}/components/${componentName}/processes/${processName}`);
 
   
 
@@ -124,9 +134,9 @@ class Firebase {
 
   userBucket = uid => this.bucket.ref(`users/${uid}`);
 
-  // userImage = uid => this.bucket.ref(`users/${uid}/images`);
+  userImages = uid => this.bucket.ref(`users/${uid}/images`);
 
-  // userProduct = uid => this.bucket.ref(`users/${uid}/product`)
+  userImage = (uid, projectName) => this.bucket.ref(`users/${uid}`).child('images').child(`${projectName}`);
 
 }
 

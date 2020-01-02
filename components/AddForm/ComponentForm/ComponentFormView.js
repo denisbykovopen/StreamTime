@@ -1,35 +1,33 @@
 import React from "react";
 import { Button, Text, View, TouchableOpacity } from "react-native";
 import { Field } from "redux-form";
-import RFTextInput from "../../common/RFTextInput";
+import RFTextInput from "../../../common/RFTextInput";
 import styles from "./styles";
-import ForgetButton from './ForgetButton';
-import SignInGoogle from '../../components/SignInGoogle';
-import SignInFacebook from '../../components/SignInFacebook';
+import { Ionicons } from '@expo/vector-icons';
+import Colors from '../../../constants/Colors';
 
-const UserFormView = ({
+const ComponentFormView = ({
   handleSubmit,
   submitFailed,
   submitSucceeded,
   submitting,
-  valid
+  valid,
+  key,
+  // handleChange,
+  form
 }) => (
   <View>
     <View style={styles.inputsContainer}>
       <Field
         component={RFTextInput}
-        name="email"
+        name="componentName"
         disabled={submitting}
         // placeholder="email"
-        label="Your Email"
+        label="Component Name"
+        // onChange={handleChange}
+        onSubmit={handleSubmit}
       />
-      <Field
-        component={RFTextInput}
-        name="password"
-        disabled={submitting}
-        // placeholder="password"
-        label="Your Password"
-      />
+
       {!submitting && submitFailed && (
         <Text style={styles.rootFailed}>Error</Text>
       )}
@@ -37,21 +35,28 @@ const UserFormView = ({
         <Text style={styles.rootSucceeded}>Success</Text>
       )}
     </View>
-    <View style={styles.outer}>
-      <ForgetButton />
+    <View>
+        <TouchableOpacity
+          style = {styles.toProcButton}
+          // onPress = {this.props.navigation.navigate('Proc')}
+          >
+            <Text>Select processes</Text>
+            <Ionicons 
+              name = "ios-arrow-forward" 
+              color = {Colors.black} 
+            />
+          </TouchableOpacity>
     </View>
     <View style={styles.buttonsContainer}>
-      <SignInFacebook />
-      <SignInGoogle />
       <TouchableOpacity
         disabled={!valid || submitting}
         onPress={handleSubmit}
         style={styles.formButton}
       >
-        <Text style={styles.formButtonText}>Log In</Text>
+        <Text style={styles.formButtonText}>Add Component</Text>
       </TouchableOpacity>
     </View>
   </View>
 );
 
-export default UserFormView;
+export default ComponentFormView;

@@ -9,12 +9,15 @@ import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
 import { SettingsIcon } from '../common/SettingsIcon';
 import HomeIcon from '../common/HomeIcon';
-import ProductsScreen from '../screens/ProductsScreen';
+import CurrentScreen from '../screens/CurrentScreen';
 import RocketIcon from '../common/RocketIcon';
 import BoxScreen from '../screens/BoxScreen';
 import BoxIcon from '../common/BoxIcon';
 import SettingsScreen from '../screens/SettingsScreen';
 import AddIcon from '../common/AddIcon';
+
+import ProjectDetailsScreen from '../screens/ProjectDetailsScreen';
+import EditProjectScreen from '../screens/EditProjectScreen';
 
 const HomeStack = createStackNavigator(
   {
@@ -28,14 +31,26 @@ HomeStack.navigationOptions = {
 HomeStack.path = '';
 
 
-const ProductsStack = createStackNavigator({
-  Producs: ProductsScreen
+const CurrentStack = createStackNavigator({
+  Current: CurrentScreen,
+  Details: {
+    screen: ProjectDetailsScreen,
+    navigationOptions: () => ({
+      header: null
+    })
+  },
+  Edit: {
+    screen: EditProjectScreen,
+    navigationOptions: () => ({
+      header: null
+    })
+  },
 })
-ProductsStack.navigationOptions = {
+CurrentStack.navigationOptions = {
   tabBarLabel: null,
   tabBarIcon: ({ focused }) => <RocketIcon focused={focused} />
 };
-ProductsStack.path = '';
+CurrentStack.path = '';
 
 
 const AddStack = createStackNavigator({
@@ -69,7 +84,7 @@ SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  ProductsStack,
+  CurrentStack,
   AddStack,
   BoxStack,
   SettingsStack

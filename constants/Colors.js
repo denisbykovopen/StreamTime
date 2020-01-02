@@ -10,8 +10,14 @@ const fieldShadow = 'rgba(241, 241, 241, 0.7)';
 const stepLineColor = 'rgb(71, 255, 191)';
 const fbButtonColor = 'rgb(74, 144, 226)';
 const gButtonColor = 'rgb(208, 2, 27)';
+const editButtonColor = 'rgb(216, 216, 216)';
+const barStart = 'rgb(163, 250, 219)';
+const barEnd = 'rgb(69, 235, 177)';
 
 export default {
+  barStart,
+  barEnd,
+  editButtonColor,
   black,
   w,
   headerTextColor,

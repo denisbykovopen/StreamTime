@@ -3,11 +3,9 @@ import { Button, Text, View, TouchableOpacity } from "react-native";
 import { Field } from "redux-form";
 import RFTextInput from "../../common/RFTextInput";
 import styles from "./styles";
-import ForgetButton from './ForgetButton';
-import SignInGoogle from '../../components/SignInGoogle';
-import SignInFacebook from '../../components/SignInFacebook';
+import AddComponent from "./AddComponent";
 
-const UserFormView = ({
+const AddFormView = ({
   handleSubmit,
   submitFailed,
   submitSucceeded,
@@ -18,17 +16,18 @@ const UserFormView = ({
     <View style={styles.inputsContainer}>
       <Field
         component={RFTextInput}
-        name="email"
+        name="productName"
         disabled={submitting}
         // placeholder="email"
-        label="Your Email"
+        label="Product Name"
       />
+      <View style={styles.line} ></View>
       <Field
         component={RFTextInput}
-        name="password"
+        name="productQuantity"
         disabled={submitting}
         // placeholder="password"
-        label="Your Password"
+        label="Quantity"
       />
       {!submitting && submitFailed && (
         <Text style={styles.rootFailed}>Error</Text>
@@ -37,21 +36,19 @@ const UserFormView = ({
         <Text style={styles.rootSucceeded}>Success</Text>
       )}
     </View>
-    <View style={styles.outer}>
-      <ForgetButton />
-    </View>
+
+    <AddComponent />
+
     <View style={styles.buttonsContainer}>
-      <SignInFacebook />
-      <SignInGoogle />
       <TouchableOpacity
         disabled={!valid || submitting}
         onPress={handleSubmit}
         style={styles.formButton}
       >
-        <Text style={styles.formButtonText}>Log In</Text>
+        <Text style={styles.formButtonText}>Create project</Text>
       </TouchableOpacity>
     </View>
   </View>
 );
 
-export default UserFormView;
+export default AddFormView;

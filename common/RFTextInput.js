@@ -55,6 +55,9 @@ const styles = StyleSheet.create({
     marginBottom: Layout.window.width * 0.05,
     backgroundColor: 'white',
     alignItems: 'center',
+
+    fontSize: Fonts.large,
+    fontWeight: '300'
   },
   rootError: {
     color: 'red',
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
     marginTop: -5,
   },
   text: {
-    fontSize: Fonts.xlarge,
+    fontSize: Fonts.large,
   }
 })
 

@@ -7,6 +7,8 @@ import PasswordChangeScreen from '../screens/PasswordChangeScreen';
 import PasswordForgetScreen from '../screens/PasswordForgetScreen';
 import TermsScreen from '../screens/TermsScreen';
 import PrivacyScreen from '../screens/PrivacyScreen';
+import ProjectDetailsScreen from '../screens/ProjectDetailsScreen';
+import EditProjectScreen from '../screens/EditProjectScreen';
 
 const AuthStack = createStackNavigator({
   SignIn: {
@@ -49,6 +51,11 @@ const AuthStack = createStackNavigator({
   // Forget: PasswordForgetScreen,
 });
 
+// const ProjectStack = createStackNavigator({
+//   Details: ProjectDetailsScreen,
+//   Edit: EditProjectScreen,
+// })
+
 // const PassStack = createStackNavigator({
 //   Forget: {
 //     screen: PasswordForgetScreen,
@@ -73,6 +80,7 @@ export default createAppContainer(
       Main: MainTabNavigator,
       // Pass: PassStack,
       // Forget: PasswordForgetScreen
+      // Project: ProjectStack,
     },
     {
       initialRouteName: "AuthLoading"

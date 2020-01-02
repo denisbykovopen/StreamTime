@@ -33,7 +33,7 @@ export default class HomeScreen extends React.Component {
         ref="scrollView"
         keyboardShouldPersistTaps={"always"}
         contentContainerStyle={{
-          flexGrow: 1 // this will fix scrollview scroll issue by passing parent view width and height to it
+          flexGrow: 1
         }}
       >
       <View style={styles.container}>
