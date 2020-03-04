@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "StreamTime",
+    "slug": "StreamTime",
+    "privacy": "unlisted",
+    "sdkVersion": "36.0.0",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.SweetlandSolutions.StreamTime",
+      "config": {
+        "usesNonExemptEncryption": false
+      } 
+    },
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "description": "StreamTime"
+  }
+}
