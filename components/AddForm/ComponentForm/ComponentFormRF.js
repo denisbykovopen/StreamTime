@@ -18,6 +18,7 @@ import { connect } from "react-redux";
 //   return errors;
 // };
 
+<<<<<<< HEAD
 // export default connect(
 //   null,
 //   null
@@ -36,3 +37,16 @@ export default reduxForm({
   enableReinitialize: true
   // destroyOnUnmount: false
 })(ComponentFormView);
+=======
+export default connect(
+  null,
+  null
+)(
+  reduxForm({
+    // form: FORM,
+    // validate,
+    enableReinitialize: true,
+    // destroyOnUnmount: false
+  })(ComponentFormView)
+);
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6

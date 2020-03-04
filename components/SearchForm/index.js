@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchFormView from "./SearchFormRF";
 import { View } from "react-native";
 import styles from "./styles";
+<<<<<<< HEAD
 import { withFirebase } from "../../Firebase/context";
 import { withNavigation } from "react-navigation";
 import CurrentProjectButton from "../CurrentProjectButton";
@@ -34,11 +35,44 @@ class SearchForm extends Component {
     this.setState(() => ({
       searchProject: name
     }))
+=======
+import { withFirebase } from '../../Firebase/context';
+import { withNavigation } from 'react-navigation';
+// import { withPropsOnChange } from 'recompose';
+
+class SearchForm extends Component {
+
+  componentDidUpdate () {
+    this.props.input.onChange(this.props.value);
+  }
+
+  handleChange = ({ name }) => {
+    // this.props.firebase
+    //   .doPasswordReset(String(email))
+    //   .then(() => {
+    //     this.props.navigation.navigate("SignIn");
+    //     console.log("--pass forget");
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+    // const newText = event.name;
+    
+    // if (newText && newText.length > 1) {
+    //   console.log("--event",event.name);
+    //   // this.handleSubmit();
+    // }
+    console.log("--name", name);
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
   };
 
   // handleChange = (event) => {
   //   const newText = event.name;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
   //   if (newText && newText.length > 1) {
   //     console.log("--event",event.name);
   //     // this.handleSubmit();
@@ -48,12 +82,19 @@ class SearchForm extends Component {
   render() {
     return (
       <View contentContainerStyle={styles.formContainer}>
+<<<<<<< HEAD
         <SearchFormView
           // onSubmit={this.handleSubmit}
           onChange={this.handleChange}
           form={"projectsSearch"}
         />
         {this.state.searchProject && <CurrentProjectButton current = {this.state.searchProject} />}
+=======
+        <SearchFormView 
+            // onSubmit={this.handleSubmit} 
+            onChange={this.handleChange}
+        />
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
       </View>
     );
   }

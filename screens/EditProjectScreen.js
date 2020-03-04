@@ -5,9 +5,13 @@ import {
   StyleSheet,
   StatusBar,
   ScrollView,
+<<<<<<< HEAD
   TouchableOpacity,
   Image
   // Constants
+=======
+  TouchableOpacity
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 } from "react-native";
 import Layout from "../constants/Layout";
 import Colors from "../constants/Colors";
@@ -17,6 +21,7 @@ import Fonts from "../constants/Fonts";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 
+<<<<<<< HEAD
 import { compose } from "recompose";
 import { connect } from "react-redux";
 
@@ -30,12 +35,22 @@ import { withNavigation } from "react-navigation";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import EditForm from "../components/EditForm";
+=======
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
+
+import { withFirebase } from '../Firebase/context';
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 
 class EditProjectScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     header: null
   });
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
   getPermissionAsync = async () => {
     if (Constants.platform.ios) {
       const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
@@ -45,6 +60,7 @@ class EditProjectScreen extends React.Component {
     }
   };
 
+<<<<<<< HEAD
   uriToBlob = uri => {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -155,6 +171,30 @@ class EditProjectScreen extends React.Component {
           </View>
         </KeyboardAwareScrollView>
       </ScrollView>
+=======
+  pickImage = async () => {
+
+    this.getPermissionAsync();
+
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      // allowsEditing: true,
+      // aspect: [4, 3],
+      quality: 1.0,
+    //   base64: true
+    });
+    if (!result.cancelled) {
+      let uri = result.uri;
+      this.props.firebase.userImage(userId, projectName).put(uri)
+    };
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.headerText}>Edit</Text>
+      </View>
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
     );
   }
 }
@@ -170,6 +210,7 @@ const styles = StyleSheet.create({
     fontSize: Fonts.xxlarge,
     marginTop: Layout.window.height * 0.05,
     marginBottom: Layout.window.height * 0.05
+<<<<<<< HEAD
   },
   imageContainer: {
     backgroundColor: Colors.w,
@@ -192,3 +233,14 @@ export default compose(
   withNavigation,
   connect(mapStateToProps, { getImage }, null, { pure: false })
 )(EditProjectScreen);
+=======
+  }
+});
+
+const mapStateToProps = ({ projects }) => ({ projects });
+
+export default compose(
+    withFirebase,
+    connect(mapStateToProps, null, null, { pure: false })
+  )(EditProjectScreen);
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6

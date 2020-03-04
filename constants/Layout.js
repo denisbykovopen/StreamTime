@@ -10,3 +10,7 @@ export default {
   },
   isSmallDevice: width < 375,
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6

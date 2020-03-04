@@ -16,13 +16,19 @@ import Layout from "../constants/Layout";
 
 // import * as Expo from 'expo';
 // import { Facebook, Constants } from 'expo';
+<<<<<<< HEAD
 
+=======
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 import * as Facebook from "expo-facebook";
 
 import { withNavigation } from 'react-navigation';
 
 import firebase from 'firebase';
+<<<<<<< HEAD
 import FBIcon from "../common/FBIcon";
+=======
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 
 const ERROR_CODE_ACCOUNT_EXISTS =
   "auth/account-exists-with-different-credential";
@@ -106,7 +112,10 @@ class SignInFacebook extends Component {
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={this.signInFb} style={styles.button}>
           <Image source={fb} style={styles.buttonImage} />
+<<<<<<< HEAD
           {/* <FBIcon /> */}
+=======
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
         </TouchableOpacity>
 
         {/* {error && <Text>{error.message}</Text>} */}

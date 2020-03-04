@@ -27,7 +27,10 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
 import firebase from 'firebase';
 
 import { withNavigation } from 'react-navigation';
+<<<<<<< HEAD
 import GIcon from "../common/GIcon";
+=======
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 
 class SignInGoogle extends Component {
   constructor(props) {
@@ -188,7 +191,10 @@ class SignInGoogle extends Component {
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={() => this.signInGoogle()} style={styles.button}>
           <Image source={g} style={styles.buttonImage} />
+<<<<<<< HEAD
           {/* <GIcon /> */}
+=======
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
         </TouchableOpacity>
 
         {/* {error && <Text>{error.message}</Text>} */}

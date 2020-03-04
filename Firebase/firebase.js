@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import app from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/storage";
+=======
+import app from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/storage';
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 
 // const config = {
 //   apiKey: process.env.REACT_APP_API_KEY,
@@ -22,6 +29,10 @@ var config = {
   appId: "1:117786404780:web:bf34e5ef3acdccbebbfc09"
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 class Firebase {
   constructor() {
     app.initializeApp(config);
@@ -45,20 +56,38 @@ class Firebase {
   }
 
   // *** Auth API ***
+<<<<<<< HEAD
   doSignInWithCredential = credential =>
     this.auth.signInWithCredential(credential);
 
+=======
+  doSignInWithCredential = (credential) =>
+    this.auth.signInWithCredential(credential);
+
+
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
+<<<<<<< HEAD
   doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
   doSignInWithFacebook = () => this.auth.signInWithPopup(this.facebookProvider);
 
   doSignInWithTwitter = () => this.auth.signInWithPopup(this.twitterProvider);
+=======
+  doSignInWithGoogle = () =>
+    this.auth.signInWithPopup(this.googleProvider);
+
+  doSignInWithFacebook = () =>
+    this.auth.signInWithPopup(this.facebookProvider);
+
+  doSignInWithTwitter = () =>
+    this.auth.signInWithPopup(this.twitterProvider);
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 
   doSignOut = () => this.auth.signOut();
 
@@ -66,6 +95,7 @@ class Firebase {
 
   doSendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
+<<<<<<< HEAD
       url: "noreply@tracking-app-01.firebaseapp.com"
     });
 
@@ -80,14 +110,32 @@ class Firebase {
           " ##### fire: onAuthUserListener", 
           // authUser
           );
+=======
+      url: "noreply@tracking-app-01.firebaseapp.com",
+    });
+
+  doPasswordUpdate = password =>
+    this.auth.currentUser.updatePassword(password);
+
+  // Merge //
+
+  onAuthUserListener = (next, fallback) =>{
+    this.auth.onAuthStateChanged(authUser => {
+      if (authUser) {
+        console.log("--auth listener check",authUser)
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
         this.user(authUser.uid)
           .once("value")
           .then(snapshot => {
             const dbUser = snapshot.val();
+<<<<<<< HEAD
             console.log(
               " ##### fire: onAuthUserListener: user.snapshot:", 
               // snapshot.val()
               );
+=======
+            console.log("oncesnap",snapshot)
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
             // default empty roles
             // if (!dbUser.roles) {
             //   dbUser.roles = {};
@@ -97,7 +145,11 @@ class Firebase {
               email: authUser.email,
               emailVerified: authUser.emailVerified,
               providerData: authUser.providerData,
+<<<<<<< HEAD
               ...dbUser
+=======
+              ...dbUser,
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
             };
 
             this.user(authUser.uid).update(authUser);
@@ -110,6 +162,7 @@ class Firebase {
         fallback();
       }
     });
+<<<<<<< HEAD
   };
 
   // User API
@@ -150,16 +203,44 @@ class Firebase {
     );
 
   usersBucket = () => this.bucket.ref("users");
+=======
+  } 
+  
+  // User API 
+
+  // userUid = this.auth.currentUser.uid;
+
+  users = () => this.db.ref('users');
+
+  user = uid => this.db.ref(`users/${uid}`);
+
+  userProjects = (uid) =>  this.db.ref(`users/${uid}`).child(`projects`);
+
+  userProject = (uid, productName) => this.db.ref(`users/${uid}`).child(`projects`).child(`${productName}`);
+
+  userProductComponent = (uid, productName, componentName) => this.db.ref(`users/${uid}`).child(`projects`).child(`${productName}`).child('components').child(`${componentName}`);
+
+  userProcess = (uid, productName, componentName, processName) => this.db.ref(`users/${uid}/projects/${productName}/components/${componentName}/processes/${processName}`);
+
+  
+
+  usersBucket = () => this.bucket.ref('users');
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 
   userBucket = uid => this.bucket.ref(`users/${uid}`);
 
   userImages = uid => this.bucket.ref(`users/${uid}/images`);
 
+<<<<<<< HEAD
   userImage = (uid, projectName) =>
     this.bucket
       .ref(`users/${uid}`)
       .child("images")
       .child(`${projectName}`);
+=======
+  userImage = (uid, projectName) => this.bucket.ref(`users/${uid}`).child('images').child(`${projectName}`);
+
+>>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 }
 
 export default Firebase;
