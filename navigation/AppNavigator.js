@@ -9,10 +9,7 @@ import TermsScreen from '../screens/TermsScreen';
 import PrivacyScreen from '../screens/PrivacyScreen';
 import ProjectDetailsScreen from '../screens/ProjectDetailsScreen';
 import EditProjectScreen from '../screens/EditProjectScreen';
-<<<<<<< HEAD
 import ProcessScreen from '../screens/ProcessScreen';
-=======
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 
 const AuthStack = createStackNavigator({
   SignIn: {
@@ -76,7 +73,6 @@ const AuthStack = createStackNavigator({
 //   }
 // });
 
-<<<<<<< HEAD
 // const ProcessStack = createStackNavigator({
 //   Proc: {
 //     screen: ProcessScreen,
@@ -86,18 +82,13 @@ const AuthStack = createStackNavigator({
 //   }
 // })
 
-=======
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 export default createAppContainer(
   createSwitchNavigator(
     {
       AuthLoading: AuthLoadingScreen,
       Auth: AuthStack,
       Main: MainTabNavigator,
-<<<<<<< HEAD
       // Proc: ProcessStack
-=======
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
       // Pass: PassStack,
       // Forget: PasswordForgetScreen
       // Project: ProjectStack,

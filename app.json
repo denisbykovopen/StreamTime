@@ -1,6 +1,5 @@
 {
   "expo": {
-<<<<<<< HEAD
     "name": "StreamTime",
     "slug": "StreamTime",
     "privacy": "unlisted",
@@ -12,22 +11,12 @@
         "usesNonExemptEncryption": false
       } 
     },
-=======
-    "name": "Tracking",
-    "slug": "Tracking",
-    "privacy": "public",
-    "sdkVersion": "36.0.0",
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-<<<<<<< HEAD
     "version": "1.0.1",
-=======
-    "version": "1.0.0",
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
@@ -41,12 +30,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-<<<<<<< HEAD
     "description": "StreamTime"
-=======
-    "ios": {
-      "supportsTablet": true
-    }
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
   }
 }

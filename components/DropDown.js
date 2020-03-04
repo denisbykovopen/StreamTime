@@ -13,10 +13,7 @@ export default class DropDown extends React.Component {
     this.setState({
       dropDown: !this.state.dropDown
     });
-<<<<<<< HEAD
     console.log("---processName:", this.props.processName)
-=======
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
   };
   render() {
     return (

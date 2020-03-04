@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { Platform } from "react-native";
 import {
@@ -37,44 +36,11 @@ const HomeStack = createStackNavigator({
     })
   }
 });
-=======
-import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import AddProjectScreen from '../screens/AddProjectScreen';
-import AddButton from '../common/AddButton';
-import Colors from '../constants/Colors';
-import Layout from '../constants/Layout';
-import { SettingsIcon } from '../common/SettingsIcon';
-import HomeIcon from '../common/HomeIcon';
-import CurrentScreen from '../screens/CurrentScreen';
-import RocketIcon from '../common/RocketIcon';
-import BoxScreen from '../screens/BoxScreen';
-import BoxIcon from '../common/BoxIcon';
-import SettingsScreen from '../screens/SettingsScreen';
-import AddIcon from '../common/AddIcon';
-
-import ProjectDetailsScreen from '../screens/ProjectDetailsScreen';
-import EditProjectScreen from '../screens/EditProjectScreen';
-
-const HomeStack = createStackNavigator(
-  {
-    Home: HomeScreen,
-  }
-);
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 HomeStack.navigationOptions = {
   tabBarLabel: null,
   tabBarIcon: ({ focused }) => <HomeIcon focused={focused} />
 };
-<<<<<<< HEAD
 HomeStack.path = "";
-=======
-HomeStack.path = '';
-
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 
 const CurrentStack = createStackNavigator({
   Current: CurrentScreen,
@@ -89,18 +55,12 @@ const CurrentStack = createStackNavigator({
     navigationOptions: () => ({
       header: null
     })
-<<<<<<< HEAD
   }
 });
-=======
-  },
-})
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 CurrentStack.navigationOptions = {
   tabBarLabel: null,
   tabBarIcon: ({ focused }) => <RocketIcon focused={focused} />
 };
-<<<<<<< HEAD
 CurrentStack.path = "";
 
 const AddStack = createStackNavigator({
@@ -113,19 +73,11 @@ const AddStack = createStackNavigator({
     })
   },
   AddTool: AddToolsScreen,
-=======
-CurrentStack.path = '';
-
-
-const AddStack = createStackNavigator({
-  Add: AddProjectScreen
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 });
 AddStack.navigationOptions = {
   tabBarLabel: null,
   tabBarIcon: ({ focused }) => <AddIcon focused={focused} />
 };
-<<<<<<< HEAD
 AddStack.path = "";
 
 const ProductsStack = createStackNavigator({
@@ -147,20 +99,6 @@ ProductsStack.navigationOptions = {
   tabBarIcon: ({ focused }) => <BoxIcon focused={focused} />
 };
 ProductsStack.path = "";
-=======
-AddStack.path = '';
-
-
-const BoxStack = createStackNavigator({
-  Box: BoxScreen
-});
-BoxStack.navigationOptions = {
-  tabBarLabel: null,
-  tabBarIcon: ({ focused }) => <BoxIcon focused={focused} />
-};
-BoxStack.path = '';
-
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen
@@ -169,7 +107,6 @@ SettingsStack.navigationOptions = {
   tabBarLabel: null,
   tabBarIcon: ({ focused }) => <SettingsIcon focused={focused} />
 };
-<<<<<<< HEAD
 SettingsStack.path = "";
 
 const tabNavigator = createBottomTabNavigator(
@@ -210,42 +147,5 @@ const tabNavigator = createBottomTabNavigator(
 );
 
 tabNavigator.path = "";
-=======
-SettingsStack.path = '';
-
-const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  CurrentStack,
-  AddStack,
-  BoxStack,
-  SettingsStack
-},{
-  tabBarOptions: { 
-    showLabel: false,
-    activeTintColor: Colors.buttonColor,
-    inactiveTintColor: Colors.black,
-    style: {
-      position:'absolute',
-      bottom: 0,
-      // display: 'flex',
-      // alignItems: 'center',
-      // justifyContent: 'center',
-      width: Layout.window.width,
-      height: Layout.window.height * 0.125,
-      zIndex: 1,
-      backgroundColor: Colors.w,
-      borderTopLeftRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
-      borderTopRightRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
-      borderTopColor: Colors.w
-    },
-    // tabStyle: {
-    //   borderTopLeftRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
-    //   borderTopRightRadius: Math.round(Layout.window.width + Layout.window.height) / 2,
-    // }
-   }
-});
-
-tabNavigator.path = '';
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 
 export default tabNavigator;

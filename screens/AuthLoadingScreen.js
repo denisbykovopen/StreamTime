@@ -27,10 +27,6 @@ class AuthLoadingScreen extends React.Component {
 
   }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
   render() {
     return (
       <View style={styles.container}>
@@ -40,7 +36,6 @@ class AuthLoadingScreen extends React.Component {
       </View>
     );
   }
-<<<<<<< HEAD
 
   componentDidMount() {
     console.log(
@@ -48,8 +43,6 @@ class AuthLoadingScreen extends React.Component {
       this.props
     )
   }
-=======
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
 }
 
 const styles = StyleSheet.create({

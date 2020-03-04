@@ -11,7 +11,6 @@ import {
 import ProgressBarAnimated from 'react-native-progress-bar-animated';
 import  Colors  from '../constants/Colors';
 import Layout from '../constants/Layout';
-<<<<<<< HEAD
 
 export default class Progress extends React.PureComponent {
   
@@ -27,14 +26,6 @@ export default class Progress extends React.PureComponent {
     // progress: 0,
     // progressWithOnComplete: 100,
     // progressCustomized: 100,
-=======
-export default class App extends React.Component {
-
-  state = {
-    progress: 50,
-    progressWithOnComplete: 100,
-    progressCustomized: 100,
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
   }
   
     increase = (key, value) => {
@@ -43,16 +34,10 @@ export default class App extends React.Component {
         });
       }
    
-<<<<<<< HEAD
   // componentDidMount () {
   //   this.props.completeProcs > 0 && this.increase( 'progress', this.props.completeProcs )
   //   console.log("------------progress props:", this.props.completeProcs)
   // }
-=======
-  componentDidMount () {
-    this.increase( 'progress', 50)
-  }
->>>>>>> ef6708b5b32b815daa85f564a5152695991bcfb6
   render() {
     const barWidth = Layout.window.width * 0.75 ;
     const progressCustomStyles = {
